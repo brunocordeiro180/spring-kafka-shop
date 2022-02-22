@@ -21,7 +21,7 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-    @Value(value = "${kafka.bootstraoAddress:localhost:9092}")
+    @Value(value = "${kafka.bootstrapAddress:localhost:9092}")
     private String bootstrapAddress;
 
     public ProducerFactory<String, ShopDTO> producerFactory(){
@@ -30,6 +30,8 @@ public class KafkaConfig {
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
         props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
         props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        props.put(ProducerConfig.BATCH_SIZE_CONFIG, "16384");
+        props.put(ProducerConfig.CONNECTIONS_MAX_IDLE_MS_CONFIG, 10000);
         props.put(ProducerConfig.CLIENT_ID_CONFIG, "shop-api");
 
         return new DefaultKafkaProducerFactory<>(props);

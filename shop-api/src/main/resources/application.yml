@@ -6,3 +6,5 @@ spring:
       ddl-auto: none
   banner:
     location: banner/banner.txt
+kafka:
+  bootstrapAddress: kafka:9092

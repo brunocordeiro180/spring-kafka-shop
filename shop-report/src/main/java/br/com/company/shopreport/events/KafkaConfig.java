@@ -18,7 +18,7 @@ import java.util.Map;
 @Configuration
 public class KafkaConfig {
 
-    @Value(value = "${kafka.bootstraoAddress:localhost:9092}")
+    @Value(value = "${kafka.bootstrapAddress:localhost:9092}")
     private String bootstrapAddress;
 
     public ConsumerFactory<String, ShopDTO> consumerFactory(){

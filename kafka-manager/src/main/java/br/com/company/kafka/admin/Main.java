@@ -24,3 +24,4 @@ public class Main {
         KafkaAdmin.describeCluster(adminClient);
     }
 }
+  ''
